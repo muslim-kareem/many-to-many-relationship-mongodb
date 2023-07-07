@@ -1,8 +1,12 @@
 package com.example.studentscoursrelationship.course;
 
+import com.example.studentscoursrelationship.student.Student;
+import com.example.studentscoursrelationship.student.StudentRepo;
+import com.example.studentscoursrelationship.student.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -11,6 +15,7 @@ import java.util.NoSuchElementException;
 public class CourseService {
 
     private final CourseRepo courseRepo;
+    private final StudentService studentService;
 
 
     public List<Course> getAll(){
@@ -23,5 +28,18 @@ public class CourseService {
 
     public Course getCourseById(String id){
         return this.courseRepo.findById(id).orElseThrow(NoSuchElementException::new);
+    }
+
+    public Course addStudentToCourse(String courseId, String studentId) {
+        Student theStudent = this.studentService.getStudentById(studentId);
+        Course theCourse = this.getCourseById(courseId);
+        if (theCourse.getStudents() == null) {
+            theCourse.setStudents(new ArrayList<>());
+            theCourse.getStudents().add(theStudent);
+            this.courseRepo.save(theCourse);
+        } else {
+            theCourse.getStudents().add(theStudent);
+        }
+        return theCourse;
     }
 }
