@@ -40,6 +40,7 @@ public class CourseService {
             this.courseRepo.save(theCourse);
         } else {
             theCourse.getStudents().add(theStudent);
+            this.courseRepo.save(theCourse);
         }
         return theCourse;
     }
