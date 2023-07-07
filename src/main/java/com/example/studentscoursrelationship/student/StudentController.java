@@ -18,17 +18,21 @@ public class StudentController {
         return this.studentService.getAll();
     }
 
+    @GetMapping("{id}")
+    public Student getStudentById(@PathVariable String id){
+        return this.studentService.getStudentById(id);
+    }
 
+    @GetMapping("/{studentId}/{courseId}")
+    public Student addCourse(@PathVariable String studentId, @PathVariable String courseId){
+        return this.studentService.addCourseToStudent(studentId, courseId);
+    }
     @PostMapping
     public Student createCourse(@RequestBody Student student){
         return this.studentService.createStudent(student);
     }
 
 
-    @GetMapping("/{studentId}/{courseId}")
-    public Student addCourse(@PathVariable String studentId, @PathVariable String courseId){
-        return this.studentService.addCourseToStudent(studentId, courseId);
-    }
 
 
 }
