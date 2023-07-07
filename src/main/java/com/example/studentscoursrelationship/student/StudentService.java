@@ -25,7 +25,7 @@ public class StudentService {
         return this.studentRepo.save(student);
     }
 
-    public Student getCourseById(String id){
+    public Student getStudentById(String id){
         return this.studentRepo.findById(id).orElseThrow(NoSuchElementException::new);
     }
 
