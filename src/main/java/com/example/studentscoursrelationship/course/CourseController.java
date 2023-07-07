@@ -18,7 +18,6 @@ public class CourseController {
         return this.courseService.getAll();
     }
 
-
     @PostMapping
     public Course createCourse(@RequestBody Course course){
         return this.courseService.createCourse(course);

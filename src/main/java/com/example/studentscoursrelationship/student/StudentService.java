@@ -4,6 +4,7 @@ import com.example.studentscoursrelationship.course.Course;
 import com.example.studentscoursrelationship.course.CourseService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
